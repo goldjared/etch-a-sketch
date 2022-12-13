@@ -1,4 +1,9 @@
-html {
+html, body {
     background-color: black;
     color: white;
+    margin: 0;
+}
+
+* {
+    border: solid red;
 }
