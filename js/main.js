@@ -2,6 +2,20 @@ gridCells();
 
 function gridCells () {
     const container = document.querySelector('.container');
+    if (adjustGrid() > 16) {
+        let value = adjustGrid();
+        const gridStyles = `
+        grid-template-columns: repeat(${value}, 1fr);
+        grid-template-rows: repeat(${value}, 1fr);`;
+        container.style.cssText = gridStyles;
+        for (i = 1; i <= value * value; i++) {
+            const cell = document.createElement('div');
+            cell.className = 'cell';
+            //cell.textContent = i;
+            container.appendChild(cell);
+        }
+    }
+    
     const gridStyles = `
         display: grid;
         grid-template-columns: repeat(16, 1fr);
@@ -20,8 +34,6 @@ function gridCells () {
         container.appendChild(cell);
 
     }
-    
-    //console.log(randomColor());
     container.addEventListener('mouseover', function(event){
         event.target.style.backgroundColor = randomHexColor();
       });
@@ -47,8 +59,7 @@ function randomInteger(max) {
     return Math.floor(Math.random()*(max + 1));
 }
 
-
-
-
-
-
+function adjustGrid() {
+    let adjustNumber = prompt('enter', '');
+    return parseInt(adjustNumber);
+}
