@@ -8,12 +8,12 @@ function gridCells () {
         grid-template-rows: repeat(16, 1fr);
         margin: 0;
         border: 0;
-        height: 400px;
-        width: 400px;
-        background-color: gray;`;
+        background-color: gray;
+        height: 600px;
+        width: 600px;`;
     container.style.cssText = gridStyles;
     
-    for (i = 1; i <= 16 * 16; i++) {
+    for (i = 1; i <= 16 * 16; i++) { 
         const cell = document.createElement('div');
         cell.className = 'cell';
         //cell.textContent = i;
@@ -46,6 +46,31 @@ function randomInteger(max) {
 }
 
 function adjustGrid() {
-    let adjustNumber = prompt('enter', '');
-    return parseInt(adjustNumber);
+    const container = document.querySelector('.container');
+    const adjustNumber = prompt('Enter number to adjust grid size. (Max value 100)', '');
+    
+    if (adjustNumber > 100) {
+        return alert('FAIL. Number too large.')
+    }
+
+    while (container.hasChildNodes()) {
+        container.removeChild(container.firstChild);
+    }
+
+    const gridStyles = `
+        display: grid;
+        grid-template-columns: repeat(${adjustNumber}, 1fr);
+        grid-template-rows: repeat(${adjustNumber}, 1fr);
+        margin: 0;
+        border: 0;
+        background-color: gray;
+        height: 600px;
+        width: 600px;`;
+    container.style.cssText = gridStyles;
+    
+    for (i = 1; i <= adjustNumber * adjustNumber; i++) {
+        const cell = document.createElement('div');
+        cell.className = 'cell';
+        container.appendChild(cell);
+    }
 }
