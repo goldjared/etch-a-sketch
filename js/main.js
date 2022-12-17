@@ -8,7 +8,7 @@ function gridCells () {
         grid-template-rows: repeat(16, 1fr);
         margin: 0;
         border: 0;
-        background-color: gray;
+        background-color: #ada6a6;
         height: 600px;
         width: 600px;`;
     container.style.cssText = gridStyles;
@@ -20,8 +20,20 @@ function gridCells () {
         container.appendChild(cell);
 
     }
+    const gridSizeText = document.querySelector('.grid-size-text');
+    gridSizeText.classList.add = ('gridSizeText');
+    gridSizeText.textContent = `Drawing space: 16 x 16`;
     container.addEventListener('mouseover', function(event){
         event.target.style.backgroundColor = randomHexColor();
+        //event.target.style.filter = 'brightness(110%)';
+        let currentFilter = event.target.style.filter;
+        let filterNum = currentFilter.replace(/\D/g, "");
+        let newFilterNum = filterNum - 10;
+        console.log('currentFilter is ', currentFilter);
+        console.log('filterNum is ', filterNum);
+        console.log('newFilterNum is ', newFilterNum);
+        event.target.style.filter = `brightness(${newFilterNum})`;
+        //event.target.style.filter = 'brightness(90%)';
       });
 }
 
@@ -48,12 +60,13 @@ function randomInteger(max) {
 function adjustGrid() {
     const container = document.querySelector('.container');
     const adjustNumber = prompt('Enter number to adjust grid size. (Max value 100)', '');
-    if (adjustNumber === '' || adjustNumber < 1) {
-        return alert('Cancelled.')
-    }
-    if (adjustNumber > 100) {
-        return alert('Cancelled. Number too large.')
-    }
+    if (adjustNumber === '' || adjustNumber < 1 || isNaN(adjustNumber)) {
+        return alert('Cancelled.');
+    } else if (adjustNumber > 100) {
+        return alert('Cancelled. Number too large.');
+    }/* else if (isNaN(adjustNumber)) {
+        return alert('Cancelled. Not a number.');
+    }*/
 
     while (container.hasChildNodes()) {
         container.removeChild(container.firstChild);
@@ -75,4 +88,8 @@ function adjustGrid() {
         cell.className = 'cell';
         container.appendChild(cell);
     }
+    const gridSizeText = document.querySelector('.grid-size-text');
+    gridSizeText.classList.add = ('gridSizeText');
+    gridSizeText.textContent = `Drawing space: ${adjustNumber} x ${adjustNumber}`;
+    
 }

@@ -1,5 +1,5 @@
 html, body {
-    background-color: rgb(219, 219, 219);
+    background-color: #dbdbdb;
     color: white;
     margin: 0;
 }
@@ -47,6 +47,12 @@ html, body {
 .grid-border {
     border: solid rgb(253, 125, 125) 5px;
     border-radius: 5px;
+}
+
+.grid-size-text {
+    color: black;
+    text-align: center;
+    font-size: 12px;
 }
 /** {
     border: solid red;
