@@ -25,15 +25,6 @@ function gridCells () {
     gridSizeText.textContent = `Drawing space: 16 x 16`;
     container.addEventListener('mouseover', function(event){
         event.target.style.backgroundColor = randomHexColor();
-        //event.target.style.filter = 'brightness(110%)';
-        let currentFilter = event.target.style.filter;
-        let filterNum = currentFilter.replace(/\D/g, "");
-        let newFilterNum = filterNum - 10;
-        console.log('currentFilter is ', currentFilter);
-        console.log('filterNum is ', filterNum);
-        console.log('newFilterNum is ', newFilterNum);
-        event.target.style.filter = `brightness(${newFilterNum})`;
-        //event.target.style.filter = 'brightness(90%)';
       });
 }
 
@@ -64,9 +55,7 @@ function adjustGrid() {
         return alert('Cancelled.');
     } else if (adjustNumber > 100) {
         return alert('Cancelled. Number too large.');
-    }/* else if (isNaN(adjustNumber)) {
-        return alert('Cancelled. Not a number.');
-    }*/
+    }
 
     while (container.hasChildNodes()) {
         container.removeChild(container.firstChild);
