@@ -48,9 +48,11 @@ function randomInteger(max) {
 function adjustGrid() {
     const container = document.querySelector('.container');
     const adjustNumber = prompt('Enter number to adjust grid size. (Max value 100)', '');
-    
+    if (adjustNumber === '' || adjustNumber < 1) {
+        return alert('Cancelled.')
+    }
     if (adjustNumber > 100) {
-        return alert('FAIL. Number too large.')
+        return alert('Cancelled. Number too large.')
     }
 
     while (container.hasChildNodes()) {
