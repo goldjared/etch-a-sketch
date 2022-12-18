@@ -27,7 +27,7 @@ function gridCells () {
         event.target.style.backgroundColor = randomHexColor();
         let currentBrightness = event.target.style.filter;
         let currentBrightnessValue = currentBrightness.replace(/\D/g, '');
-        event.target.style.filter = `brightness(${currentBrightnessValue - 10}%)`;
+        event.target.style.filter = `brightness(${currentBrightnessValue - 15}%)`;
       });
 }
 
