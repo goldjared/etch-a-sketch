@@ -1,5 +1,5 @@
 html, body {
-    background-color: #dbdbdb;
+    background-color: #561736;
     color: white;
     margin: 0;
 }
@@ -50,7 +50,7 @@ html, body {
 }
 
 .grid-size-text {
-    color: black;
+    color: rgb(242, 242, 242);
     text-align: center;
     font-size: 12px;
 }
