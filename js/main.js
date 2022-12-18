@@ -16,7 +16,7 @@ function gridCells () {
     for (i = 1; i <= 16 * 16; i++) { 
         const cell = document.createElement('div');
         cell.className = 'cell';
-        //cell.textContent = i;
+        cell.style.cssText = 'filter: brightness(110%);';
         container.appendChild(cell);
 
     }
@@ -25,6 +25,9 @@ function gridCells () {
     gridSizeText.textContent = `Drawing space: 16 x 16`;
     container.addEventListener('mouseover', function(event){
         event.target.style.backgroundColor = randomHexColor();
+        let currentBrightness = event.target.style.filter;
+        let currentBrightnessValue = currentBrightness.replace(/\D/g, '');
+        event.target.style.filter = `brightness(${currentBrightnessValue - 10}%)`;
       });
 }
 
@@ -76,6 +79,7 @@ function adjustGrid() {
         const cell = document.createElement('div');
         cell.className = 'cell';
         container.appendChild(cell);
+        cell.style.cssText = 'filter: brightness(110%);';
     }
     const gridSizeText = document.querySelector('.grid-size-text');
     gridSizeText.classList.add = ('gridSizeText');
